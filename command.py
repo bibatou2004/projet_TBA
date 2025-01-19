@@ -1,5 +1,3 @@
-# This file contains the Command class.
-
 class Command:
     """
     This class represents a command. A command is composed of a command word, a help string, an action and a number of parameters.
@@ -41,5 +39,4 @@ class Command:
         return  self.command_word \
                 + self.help_string
     
-
 
