@@ -6,50 +6,59 @@ class Player():
         self.name = name
         self.current_room = None
         self.history = []  # Initialize the history attribute as an empty list.
-    
+        self.inventory = {}
+        self.army = 100
     # Define the move method.
     def move(self, direction):
-        # Get the next room from the exits dictionary of the current room.
+    # Vérifier si la direction est valide dans la pièce actuelle
+        if direction not in self.current_room.exits:
+           print("\nIl n'y a pas de sortie dans cette direction !\n")
+           return False
+
+        # Obtenir la pièce suivante
         next_room = self.current_room.exits[direction]
 
-        # If the next room is None, print an error message and return False.
-        if next_room is None:
-            print("\nAucune porte dans cette direction !\n")
-            return False
-        # Add the current room to the history before moving.
+        # Ajouter la pièce actuelle à l'historique avant de changer de pièce
         self.history.append(self.current_room)
 
-        # Set the current room to the next room.
+        # Mettre à jour la pièce actuelle
         self.current_room = next_room
-        print(self.current_room.get_long_description())
 
-        # Display the history after moving.
-        print(self.get_history())
+        # Afficher le nom et la description de la nouvelle pièce
+        print(f"Vous êtes maintenant dans : {next_room.name}")
+        print(next_room.description)
+
+        # Afficher les sorties uniquement si la pièce n'est pas le château
+        if next_room.name.lower() != "chateau":
+            print(f"Sorties: {', '.join(next_room.exits.keys())}\n")
+
         return True
+
     # Define the get_history method.
     def get_history(self):
         if not self.history:
             return "\nVous n'avez pas encore visité de pièces."
 
         # Create a list of room descriptions from the history.
-        visited_rooms = [room.get_short_description() for room in self.history]
+        visited_rooms = [room.get_long_description() for room in self.history]
         history_str = "\nVous avez déjà visité les pièces suivantes:\n    - " + "\n    - ".join(visited_rooms)
         return history_str
+    
+    def get_inventory(self):
+        """Retourne une chaîne représentant l'inventaire du joueur."""
+        if not self.inventory:
+            return "Votre inventaire est vide."
 
-    # Define the back method to move the player back to the previous room.
-    def back(self):
-        if not self.history:
-            print("\nImpossible de revenir en arrière, aucun historique disponible.\n")
-            return False
+        inventory_list = "\nVous disposez des items suivants :\n"
+        for name, item in self.inventory.items():
+            inventory_list += f"    - {name}: {item.description} ({item.weight} kg)\n"
+        return inventory_list
+    
+    def get_army(self):
 
-        # Pop the last room from the history and set it as the current room.
-        self.current_room = self.history.pop()
-        print(self.current_room.get_long_description())
-        return True
+        army_list = f"\nVotre armée possède {self.army} :\n"
+        return army_list
 
-# Notes:
-# - At the start of the game, the history should be empty because the player hasn't moved yet.
-# - The history is updated only when the player moves to a new room.
 
 
     
