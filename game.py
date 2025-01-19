@@ -55,18 +55,7 @@ class Game:
         
 
 
-        # Créer des salles
-        #forteresse = Room("Forteresse", "Une forteresse ancienne perchée au sommet d'une montagne volcanique.")
-        #foret = Room("Forêt", "Une forêt dense regorgeant de ressources naturelles.")
-        #desert = Room("Désert", "Une vaste étendue désertique avec peu de ressources.")
-        #ruines = Room("Ruines", "Un lieu ancien avec des structures abandonnées.")
-        #port = Room("Port", "Un port maritime crucial pour le commerce.")
-        #plaine = Room("Plaine", "Un territoire ouvert idéal pour des batailles.")
-        #gorge = Room("Gorge", "Un canyon étroit avec des chemins dangereux.")
-        #citadelle = Room("Citadelle", "Une région enneigée avec des mines rares.")
-        #tour = Room("Tour", "Une structure imposante située au sommet de la forteresse.")
-        #cryptes = Room("Cryptes", "Un réseau souterrain mystérieux sous les ruines.")
-        # Créer les pièces
+
 
         forteresse = Room("Forteresse", "Une forteresse ancienne perchée au sommet d'une montagne volcanique.", enemy_army=10)
         foret = Room("Forêt", "Une forêt dense regorgeant de ressources naturelles.", enemy_army=5)

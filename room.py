@@ -75,6 +75,3 @@ class Room:
     
 
         
-        #for name, item in self.inventory.items():
-           # inventory_list += f"    - {name}: {item.description} ({item.weight} kg)\n"
-        #return inventory_list

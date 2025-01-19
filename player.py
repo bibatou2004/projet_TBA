@@ -7,7 +7,9 @@ class Player():
         self.current_room = None
         self.history = []  # Initialize the history attribute as an empty list.
         self.inventory = {}
-        self.army = 15
+
+        self.army = 100
+
     # Define the move method.
     def move(self, direction):
     # Vérifier si la direction est valide dans la pièce actuelle
@@ -58,6 +60,7 @@ class Player():
 
         army_list = f"\nVotre armée possède {self.army} :\n"
         return army_list
+
 
 
 
